@@ -10,6 +10,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "intelephense",
       })
     end,
   },
@@ -21,6 +22,19 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
+        intelephense = { -- Ajoutez la configuration du serveur PHP
+          root_dir = function(fname)
+            return require("lspconfig.util").root_pattern("composer.json", "composer.lock", ".git")(fname)
+              or vim.loop.cwd()
+          end,
+          settings = {
+            intelephense = {
+              files = {
+                maxSize = 5000000, -- Optionnel : vous pouvez augmenter la taille des fichiers analysés par Intelephense si nécessaire
+              },
+            },
+          },
+        },
         cssls = {},
         tailwindcss = {
           root_dir = function(...)
