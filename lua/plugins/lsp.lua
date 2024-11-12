@@ -22,7 +22,7 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
-        intelephense = { -- Ajoutez la configuration du serveur PHP
+        intelephense = { 
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern("composer.json", "composer.lock", ".git")(fname)
               or vim.loop.cwd()
@@ -30,7 +30,7 @@ return {
           settings = {
             intelephense = {
               files = {
-                maxSize = 5000000, -- Optionnel : vous pouvez augmenter la taille des fichiers analysés par Intelephense si nécessaire
+                maxSize = 5000000, -- Optionnel : augmenter la taille des fichiers analysés par Intelephense si nécessaire
               },
             },
           },
