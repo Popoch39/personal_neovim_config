@@ -22,7 +22,7 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
-        intelephense = { 
+        intelephense = {
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern("composer.json", "composer.lock", ".git")(fname)
               or vim.loop.cwd()
@@ -71,7 +71,36 @@ return {
             },
           },
         },
-        html = {},
+        html = {
+          filetypes = { "html", "htmldjango" },
+          init_options = {
+            configurationSection = { "html", "css", "javascript" },
+            embeddedLanguages = {
+              css = true,
+              javascript = true,
+            },
+            provideFormatter = true,
+          },
+          settings = {
+            html = {
+              format = {
+                enable = true,
+                wrapLineLength = 120,
+                unformatted = "",
+                contentUnformatted = "pre,code,textarea",
+                indentInnerHtml = false,
+                preserveNewLines = true,
+                maxPreserveNewLines = 2,
+                indentHandlebars = false,
+                endWithNewline = false,
+                extraLiners = "head, body, /html",
+                wrapAttributes = "auto",
+                templating = false,
+                unformattedContentDelimiter = "",
+              },
+            },
+          },
+        },
         lua_ls = {
           -- enabled = false,
           single_file_support = true,
