@@ -22,6 +22,10 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
+        -- c & c++
+        clangd = {},
+
+        --php
         intelephense = {
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern("composer.json", "composer.lock", ".git")(fname)
@@ -41,6 +45,8 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+
+        -- js && ts
         tsserver = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)

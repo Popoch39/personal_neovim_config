@@ -33,6 +33,8 @@ return {
           "vim",
           "lua",
           "php",
+          "c",
+          "c++",
         },
         highlight = { enable = true },
         auto_install = true,
