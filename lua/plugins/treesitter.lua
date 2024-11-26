@@ -12,6 +12,12 @@ return {
       },
     },
   },
+
+  -- Support Blade avec Treesitter
+  {
+    "jwalton512/vim-blade",
+    ft = "blade", -- chargement uniquement pour les fichiers .blade.php
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -26,6 +32,7 @@ return {
           "css",
           "gitignore",
           "graphql",
+          "blade",
           "http",
           "json",
           "scss",
@@ -42,6 +49,17 @@ return {
           enable = true,
           use_virtual_text = true,
           lint_events = { "BufWrite", "CursorHold" },
+        },
+      })
+    end,
+
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+
+      -- Mapping spécifique Blade si nécessaire
+      vim.filetype.add({
+        extension = {
+          blade = "blade",
         },
       })
     end,

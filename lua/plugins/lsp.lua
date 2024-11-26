@@ -15,6 +15,19 @@ return {
     end,
   },
 
+  {
+    "adalessa/laravel.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "tpope/vim-dotenv",
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn" },
+    keys = {
+      { "<leader>la", ":Artisan<cr>", desc = "Laravel Artisan" },
+    },
+  },
+
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
@@ -35,6 +48,10 @@ return {
             intelephense = {
               files = {
                 maxSize = 5000000, -- Optionnel : augmenter la taille des fichiers analysés par Intelephense si nécessaire
+                associations = {
+                  "*.php",
+                  "*.blade.php",
+                },
               },
             },
           },
@@ -182,5 +199,9 @@ return {
     opts = function(_, opts)
       table.insert(opts.sources, { name = "emoji" })
     end,
+  },
+
+  {
+    "jwalton512/vim-blade",
   },
 }
