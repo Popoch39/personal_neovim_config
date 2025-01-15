@@ -32,8 +32,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
-vim.opt.scrolloff = 0
+vim.opt.scrolloff = 15
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 0
 vim.opt.formatoptions:append({ "r" })
 vim.g.moonflyTransparent = true
+vim.opt.clipboard = "unnamedplus"

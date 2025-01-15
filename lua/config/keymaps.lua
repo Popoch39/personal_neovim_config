@@ -7,3 +7,4 @@ local opts = { noremap = true, silent = true }
 -- Leader + a fait la même chose que 'A' en mode normal
 map("n", "<leader>a", "A", opts)
 map("n", "<leader>z", "I", opts)
+map("n", "<leader>m", vim.diagnostic.goto_next, opts)

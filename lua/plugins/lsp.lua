@@ -8,8 +8,8 @@ return {
         "shellcheck",
         "shfmt",
         "tailwindcss-language-server",
-        "typescript-language-server",
         "css-lsp",
+        "vtsls",
         "intelephense",
       })
     end,
@@ -56,17 +56,16 @@ return {
             },
           },
         },
+        ---@type lspconfig.options
         cssls = {},
         tailwindcss = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
-
-        -- js && ts
-        tsserver = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
+        vtsls = {
+          root_dir = function(fname)
+            return require("lspconfig.util").root_pattern("package.json", ".git")(fname)
           end,
           single_file_support = false,
           settings = {
@@ -94,6 +93,7 @@ return {
             },
           },
         },
+        ---@type lspconfig.options
         html = {
           filetypes = { "html", "htmldjango" },
           init_options = {
